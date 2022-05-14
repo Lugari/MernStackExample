@@ -13,8 +13,14 @@ app.get('/',(req: Request, res: Response)=>{
     res.send('(Mongoose - Express - Reactjs - Nodejs)')
 })
 
-app.get('/hello',(req: Request, res: Response)=>{
-    res.send('Hola mundo... \n (Mongoose - Express - Reactjs - Nodejs)')
+app.get('/hello/:name',(req: Request, res: Response)=>{
+    res.send(`Hola ${req.params.name}... \n (Mongoose - Express - Reactjs - Nodejs)`)
+})
+
+app.get('/data',(req: Request, res: Response)=>{
+    res.send({
+            message: 'Goodbye, world'
+  })
 })
 
 //Excute app and listen port

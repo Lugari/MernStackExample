@@ -14,8 +14,13 @@ const port = process.env.PORT || 8000;
 app.get('/', (req, res) => {
     res.send('(Mongoose - Express - Reactjs - Nodejs)');
 });
-app.get('/hello', (req, res) => {
-    res.send('Hola mundo... \n (Mongoose - Express - Reactjs - Nodejs)');
+app.get('/hello/:name', (req, res) => {
+    res.send(`Hola ${req.params.name}... \n (Mongoose - Express - Reactjs - Nodejs)`);
+});
+app.get('/data', (req, res) => {
+    res.send({
+        message: 'Goodbye, world'
+    });
 });
 //Excute app and listen port
 app.listen(port, () => console.log(`Express Server running at port http://localhost:${port}`));
