@@ -20,6 +20,10 @@ server.use(
   rootRouter
 )
 
+// Static server
+
+server.use(express.static('public'))
+
 // TODO: MONGOOSE CONNECTION
 
 // SECURITY CONFIG
