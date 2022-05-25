@@ -6,6 +6,7 @@
 import express, { Request, Response } from 'express'
 import helloRouter from './HelloRouter'
 import GoodbyeRouter from './GoodbyeRouter'
+import UsersRouter from './UsersRouter'
 import { LogInfo } from '../utils/logger'
 // Server instance
 
@@ -27,5 +28,6 @@ rootRouter.get('/', (req: Request, res: Response) => {
 server.use('/', rootRouter) // Control http://localhost:port/api
 server.use('/hello', helloRouter) // Control http://localhost:port/api/hello
 server.use('/goodbye', GoodbyeRouter)
+server.use('/users', UsersRouter)
 
 export default server
