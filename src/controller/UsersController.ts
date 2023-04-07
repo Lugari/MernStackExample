@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Get, Route, Tags, Query, Delete, Post, Put } from 'tsoa'
+import { Get, Route, Tags, Query, Delete, Post, Put, Body } from 'tsoa'
 import { IUsersController } from './interfaces'
 import { BasicResponse } from './types'
 import { LogSuccess, LogError, LogWarning } from '../utils/logger'
@@ -58,7 +58,7 @@ export class UserController implements IUsersController {
  @Post('/')
   public async createUser (@Query() user:any): Promise<any> {
     let response: any = ''
-    if (user.email) {
+    if (user) {
       await CreateUser(user).then((r) => {
         LogSuccess(`[/api/users]: creating user request ${user.name}`)
         response = { message: `User ${user.name} was created succesfully` }
@@ -75,7 +75,7 @@ export class UserController implements IUsersController {
    if (id) {
      await UpdateUser(user, id).then((r) => {
        LogSuccess(`[/api/users]: Updating user ${id} request ${user}`)
-       response = { message: `User ${user} was updated succesfully` }
+       response = { message: `User ${user.name} was updated succesfully` }
      })
    } else {
      response = { message: 'Please provide a valid user id to update' }

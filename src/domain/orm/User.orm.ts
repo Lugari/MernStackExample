@@ -48,7 +48,7 @@ export const CreateUser = async (user:any): Promise<any> => {
 }
 
 // Update user by ID
-export const UpdateUser = async (user:any, id:string): Promise<any> => {
+export const UpdateUser = async (user:any, id:string): Promise<any | undefined> => {
   try {
     const userModel = userEntity()
     return await userModel.findByIdAndUpdate(id, user)
